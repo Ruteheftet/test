@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ruteheftet – din guide til kollektiv-Norge. Finn inspirasjon til reiser med buss, ferje og tog.">
+  <title>Ruteheftet – Din guide til kollektiv-Norge</title>
+  <style>
+    :root {
+      /* Bytt gjerne ut denne fargen med den eksakte blåfargen fra originalen. */
+      --blue: #1677b8;
+      --blue-dark: #105b8d;
+      --text: #25313b;
+      --muted: #5d6b75;
+      --light: #f3f7fa;
+      --white: #ffffff;
+      --border: #dce5eb;
+      --max-width: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .container {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      color: var(--white);
+      background: var(--blue);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
+    }
+    .header-inner {
+      min-height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      padding-block: 15px;
+    }
+    .brand {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.8rem;
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -.04em;
+      white-space: nowrap;
+    }
+    .brand small {
+      display: block;
+      margin-top: 5px;
+      font-size: .75rem;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+    .main-nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: .95rem;
+      font-weight: 600;
+      opacity: .96;
+    }
+    .main-nav a:hover,
+    .main-nav a:focus-visible {
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+
+    .hero {
+      padding: 58px 0 54px;
+      background: var(--light);
+      text-align: center;
+    }
+    .hero h1 {
+      margin: 0 auto 14px;
+      max-width: 820px;
+      font-size: clamp(2rem, 4vw, 3.35rem);
+      line-height: 1.12;
+      letter-spacing: -.035em;
+    }
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+      font-size: 1.12rem;
+    }
+    .hero-image {
+      width: 100%;
+      min-height: 220px;
+      max-height: 430px;
+      aspect-ratio: 16 / 7;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed #9bb5c6;
+      border-radius: 8px;
+      background: #e6eef3;
+      color: #526b7b;
+      overflow: hidden;
+    }
+    /* Når du har bildet klart, kan du erstatte .hero-image-diven med:
+       <img class="hero-image" src="bildet-ditt.jpg" alt="Beskriv bildet her">
+       og eventuelt endre CSS til: object-fit: cover; border: 0; */
+    .hero-image span {
+      padding: 20px;
+      font-size: .95rem;
+    }
+
+    main section { padding: 52px 0; }
+    .section-heading {
+      margin: 0 0 10px;
+      font-size: clamp(1.6rem, 3vw, 2.15rem);
+      line-height: 1.2;
+      letter-spacing: -.025em;
+    }
+    .section-intro {
+      max-width: 720px;
+      margin: 0 0 28px;
+      color: var(--muted);
+    }
+    .destination-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .destination-card {
+      display: block;
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--white);
+      text-decoration: none;
+      transition: border-color .15s ease, transform .15s ease;
+    }
+    .destination-card:hover {
+      border-color: var(--blue);
+      transform: translateY(-2px);
+    }
+    .destination-card h3 {
+      margin: 0 0 5px;
+      color: var(--blue-dark);
+      font-size: 1.12rem;
+    }
+    .destination-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .94rem;
+    }
+    .travel-section { background: var(--light); }
+    .travel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .travel-item {
+      padding: 22px;
+      background: var(--white);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .travel-item h3 { margin: 0 0 8px; }
+    .travel-item p { margin: 0; color: var(--muted); }
+
+    .callout {
+      margin-top: 28px;
+      padding: 24px;
+      border-left: 4px solid var(--blue);
+      background: var(--white);
+    }
+    .callout p { margin: 0; }
+
+    .site-footer {
+      padding: 28px 0;
+      color: var(--white);
+      background: #17384d;
+      font-size: .9rem;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+    }
+    .site-footer p { margin: 0; }
+    .site-footer a { color: var(--white); }
+
+    @media (max-width: 760px) {
+      .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .main-nav { justify-content: flex-start; gap: 8px 16px; }
+      .hero { padding: 40px 0; }
+      .destination-grid, .travel-grid { grid-template-columns: 1fr 1fr; }
+      .hero-image { aspect-ratio: 4 / 3; min-height: 180px; }
+    }
+    @media (max-width: 480px) {
+      .container { width: min(100% - 28px, var(--max-width)); }
+      .brand { font-size: 1.6rem; }
+      .main-nav { gap: 8px 13px; }
+      .main-nav a { font-size: .9rem; }
+      main section { padding: 38px 0; }
+      .destination-grid, .travel-grid { grid-template-columns: 1fr; }
+      .destination-card, .travel-item { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="toppen">
+    <div class="container header-inner">
+      <a class="brand" href="#toppen" aria-label="Ruteheftet – til forsiden">
+        Ruteheftet
+        <small>Din guide til kollektiv-Norge</small>
+      </a>
+      <nav class="main-nav" aria-label="Hovedmeny">
+        <a href="#toppen">Hovedside</a>
+        <a href="#reisemal">Hvor skal du?</a>
+        <a href="#kollektivt">Å reise kollektivt</a>
+        <a href="#nyheter">Nyheter</a>
+        <a href="#om">Om Ruteheftet</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container">
+      <h1 id="hero-title">Din guide til kollektiv-Norge</h1>
+      <p>Oppdag Norge med buss, ferje og tog. Finn inspirasjon, utforsk reisemål og gjør reisen til en del av opplevelsen.</p>
+
+      <!-- Sett inn ditt eget bilde her når du er klar. Se kommentaren i CSS-en. -->
+      <div class="hero-image" role="img" aria-label="Plassholder for eget forsidebilde">
+        <span>Plass til ditt forsidebilde – bytt ut dette feltet når du er klar</span>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section id="reisemal">
+      <div class="container">
+        <h2 class="section-heading">Hvor skal du?</h2>
+        <p class="section-intro">Velg en landsdel og finn inspirasjon til steder du kan oppleve med kollektivtransport.</p>
+
+        <div class="destination-grid">
+          <a class="destination-card" href="#nord-norge">
+            <h3>Nord-Norge</h3>
+            <p>Svalbard, Finnmark, Troms, Lofoten og Helgelandskysten.</p>
+          </a>
+          <a class="destination-card" href="#midt-norge">
+            <h3>Midt-Norge</h3>
+            <p>Trondheim, Røros, Nordmøre og Romsdal.</p>
+          </a>
+          <a class="destination-card" href="#vestlandet">
+            <h3>Vestlandet</h3>
+            <p>Sunnmøre, Nordfjord, Loen, Sogn, Bergen og Stavanger.</p>
+          </a>
+          <a class="destination-card" href="#sorlandet">
+            <h3>Sørlandet</h3>
+            <p>Kristiansand, Lindesnes fyr og kysten rundt.</p>
+          </a>
+          <a class="destination-card" href="#ostlandet">
+            <h3>Østlandet</h3>
+            <p>Oslo, Nedre Glomma, Mjøsbyene og Grenland.</p>
+          </a>
+          <a class="destination-card" href="#utlandet">
+            <h3>Utlandet</h3>
+            <p>Ideer til reiser videre utenfor Norges grenser.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="travel-section" id="kollektivt">
+      <div class="container">
+        <h2 class="section-heading">Å reise kollektivt</h2>
+        <p class="section-intro">Nyttig informasjon som gjør det enklere å planlegge reisen og komme seg fram.</p>
+        <div class="travel-grid">
+          <article class="travel-item">
+            <h3>Reise med buss</h3>
+            <p>Tips til bussreisen og hvordan du kan planlegge transporten mellom reisemål.</p>
+          </article>
+          <article class="travel-item">
+            <h3>Reise med ferje</h3>
+            <p>La ferjestrekningen bli en del av turen og opplev Norge fra sjøen.</p>
+          </article>
+          <article class="travel-item">
+            <h3>Reise med tog</h3>
+            <p>Finn inspirasjon til togreiser gjennom byer, daler og norsk natur.</p>
+          </article>
+        </div>
+        <div class="callout">
+          <p><strong>Et lite reisetips:</strong> Sjekk alltid oppdaterte rutetider og billettvilkår hos transportselskapet før du reiser.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="nyheter">
+      <div class="container">
+        <h2 class="section-heading">Nyheter og reisetips</h2>
+        <p class="section-intro">Her kan du senere legge inn siste nytt, nye reiseguider og anbefalinger fra Ruteheftet.</p>
+      </div>
+    </section>
+
+    <section id="om" class="travel-section">
+      <div class="container">
+        <h2 class="section-heading">Om Ruteheftet</h2>
+        <p class="section-intro">Ruteheftet gir inspirasjon til å oppleve Norge med kollektivtransport. Bruk oversikten over reisemål til å finne ideer til ditt neste eventyr.</p>
+      </div>
+    </section>
+
+    <!-- Disse id-ene gjør at reisemålsboksene fungerer som en enkel navigasjon i denne filen. -->
+    <div id="nord-norge"></div>
+    <div id="midt-norge"></div>
+    <div id="vestlandet"></div>
+    <div id="sorlandet"></div>
+    <div id="ostlandet"></div>
+    <div id="utlandet"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year">2026</span> Ruteheftet</p>
+      <p><a href="#toppen">Til toppen ↑</a></p>
+    </div>
+  </footer>
+</body>
+</html>
